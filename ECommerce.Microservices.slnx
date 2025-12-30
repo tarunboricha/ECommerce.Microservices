@@ -1,0 +1,30 @@
+<Solution>
+  <Folder Name="/api-gateway/">
+    <Project Path="api-gateway/ApiGateway.csproj" />
+  </Folder>
+  <Folder Name="/services/">
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Folder Name="/services/auth/">
+    <Project Path="services/auth/AuthService.API/AuthService.API.csproj" />
+    <Project Path="services/auth/AuthService.Application/AuthService.Application.csproj" />
+    <Project Path="services/auth/AuthService.Domain/AuthService.Domain.csproj" />
+    <Project Path="services/auth/AuthService.Infrastructure/AuthService.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/services/cart/">
+    <Project Path="services/cart/CartService.API/CartService.API.csproj" Id="2217f98c-a7c4-4ea8-81c7-6b7fcceb9f68" />
+    <Project Path="services/cart/CartService.Application/CartService.Application.csproj" Id="30a9a189-bd10-4b5f-b6e0-bb13ae449dd1" />
+    <Project Path="services/cart/CartService.Domain/CartService.Domain.csproj" Id="8ca3a279-1d3f-4e8c-bfe7-e5c750cb3979" />
+    <Project Path="services/cart/CartService.Infrastructure/CartService.Infrastructure.csproj" Id="445a7e15-ec0c-45ec-ad6c-f8ec42600bc8" />
+  </Folder>
+  <Folder Name="/services/product/">
+    <Project Path="services/product/ProductService.API/ProductService.API.csproj" Id="aca3c193-4d45-465b-ae60-266863aa0b65" />
+    <Project Path="services/product/ProductService.Application/ProductService.Application.csproj" Id="8b0519af-1eb6-48f1-b02b-47938984c525" />
+    <Project Path="services/product/ProductService.Domain/ProductService.Domain.csproj" Id="8e87bf35-bf5a-4c09-987b-eed455e68ddd" />
+    <Project Path="services/product/ProductService.Infrastructure/ProductService.Infrastructure.csproj" Id="b2cf5076-56f9-4a5c-8eda-f1e47be650c4" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".env" />
+    <File Path=".gitignore" />
+  </Folder>
+</Solution>
