@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngular", policy =>
     {
         policy
-            .WithOrigins("http://localhost:4200", "https://kwgpbwhm-4200.inc1.devtunnels.ms")
+            .WithOrigins("http://localhost:4200", "https://tarunboricha.com")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
