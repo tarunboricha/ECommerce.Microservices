@@ -20,7 +20,7 @@ jobs:
     - name: 4️⃣ Build Entire Solution (All Microservices)
       run: dotnet build --configuration Release --no-restore
 
-    - name: Run Unit Tests (Skip if none exist)
+    - name: Run Unit Tests (Skip if not exist)
       run: |
         if dotnet sln list | grep -i test; then
           dotnet test --no-build --verbosity normal
