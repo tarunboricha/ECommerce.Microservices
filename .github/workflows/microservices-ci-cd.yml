@@ -1,0 +1,53 @@
+name: ECommerce Microservices CI/CD (Docker Local Deployment)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 1️⃣ Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: 2️⃣ Setup .NET SDK (Match your project version)
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: 3️⃣ Restore All Dependencies
+      run: dotnet restore
+
+    - name: 4️⃣ Build Entire Solution (All Microservices)
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Run Unit Tests (Skip if none exist)
+      run: |
+        if dotnet sln list | grep -i test; then
+          dotnet test --no-build --verbosity normal
+        else
+          echo "No test projects found. Skipping tests."
+        fi
+
+    - name: 6️⃣ Create .env file dynamically for Docker
+      run: |
+        echo "SA_PASSWORD=${{ secrets.SA_PASSWORD }}" >> .env
+        echo "JWT_KEY=${{ secrets.JWT_KEY }}" >> .env
+        echo "JWT_ISSUER=${{ secrets.JWT_ISSUER }}" >> .env
+        echo "JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}" >> .env
+
+    - name: 7️⃣ Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: 8️⃣ Build All Microservices Containers
+      run: docker compose build
+
+    - name: 9️⃣ Start Full Microservices Stack (Local Deployment Simulation)
+      run: docker compose up -d
+
+    - name: 🔟 Verify Running Containers
+      run: docker ps
