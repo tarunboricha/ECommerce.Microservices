@@ -33,16 +33,16 @@ jobs:
           Write-Host "No test projects found. Skipping test cases."
         }
 
-    - name: Create .env File (UTF-8 for Docker)
+    - name: Create .env File (UTF-8 Safe)
       shell: powershell
       run: |
-        $envContent = @"
-                        SA_PASSWORD=${{ secrets.SA_PASSWORD }}
-                        JWT_KEY=${{ secrets.JWT_KEY }}
-                        JWT_ISSUER=${{ secrets.JWT_ISSUER }}
-                        JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}
-                        "@
-                            [System.IO.File]::WriteAllText(".env", $envContent, [System.Text.Encoding]::UTF8)
+        $lines = @(
+          "SA_PASSWORD=${{ secrets.SA_PASSWORD }}",
+          "JWT_KEY=${{ secrets.JWT_KEY }}",
+          "JWT_ISSUER=${{ secrets.JWT_ISSUER }}",
+          "JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}"
+        )
+        [System.IO.File]::WriteAllLines(".env", $lines, [System.Text.Encoding]::UTF8)
 
     - name: 6️⃣ Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
