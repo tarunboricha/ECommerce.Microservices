@@ -30,7 +30,7 @@ jobs:
         if dotnet sln list | grep -i test; then
           dotnet test --no-build --verbosity normal
         else
-          echo "No test projects found. Skipping tests."
+          echo "No test projects found. Skipping test cases."
         fi
 
     - name: 6️⃣ Create .env file dynamically for Docker
