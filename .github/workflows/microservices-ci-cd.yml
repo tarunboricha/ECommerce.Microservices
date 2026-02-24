@@ -14,35 +14,44 @@ jobs:
     - name: 1️⃣ Checkout Repository
       uses: actions/checkout@v3
 
-    - name: 3️⃣ Restore All Dependencies
+    - name: 2️⃣ Restore All Dependencies
+      shell: powershell
       run: dotnet restore
 
-    - name: 4️⃣ Build Entire Solution (All Microservices)
+    - name: 3️⃣ Build Entire Solution (All Microservices)
+      shell: powershell
       run: dotnet build --configuration Release --no-restore
 
-    - name: Run Unit Tests (Skip if not exist)
+    - name: 4️⃣ Run Unit Tests (Skip if not exist)
+      shell: powershell
       run: |
-        if dotnet sln list | grep -i test; then
+        $slnList = dotnet sln list 2>$null
+        if ($slnList -match "test") {
+          Write-Host "Test projects found. Running tests..."
           dotnet test --no-build --verbosity normal
-        else
-          echo "No test projects found. Skipping test cases."
-        fi
+        } else {
+          Write-Host "No test projects found. Skipping test cases."
+        }
 
-    - name: 6️⃣ Create .env file dynamically for Docker
+    - name: 5️⃣ Create .env file dynamically for Docker
+      shell: powershell
       run: |
-        echo "SA_PASSWORD=${{ secrets.SA_PASSWORD }}" >> .env
-        echo "JWT_KEY=${{ secrets.JWT_KEY }}" >> .env
-        echo "JWT_ISSUER=${{ secrets.JWT_ISSUER }}" >> .env
-        echo "JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}" >> .env
+        "SA_PASSWORD=${{ secrets.SA_PASSWORD }}" | Out-File -FilePath .env -Append
+        "JWT_KEY=${{ secrets.JWT_KEY }}" | Out-File -FilePath .env -Append
+        "JWT_ISSUER=${{ secrets.JWT_ISSUER }}" | Out-File -FilePath .env -Append
+        "JWT_AUDIENCE=${{ secrets.JWT_AUDIENCE }}" | Out-File -FilePath .env -Append
 
-    - name: 7️⃣ Set up Docker Buildx
+    - name: 6️⃣ Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    - name: 8️⃣ Build All Microservices Containers
+    - name: 7️⃣ Build All Microservices Containers
+      shell: powershell
       run: docker compose build
 
-    - name: 9️⃣ Start Full Microservices Stack (Local Deployment Simulation)
+    - name: 8️⃣ Start Full Microservices Stack (Local Deployment Simulation)
+      shell: powershell
       run: docker compose up -d
 
-    - name: 🔟 Verify Running Containers
+    - name: 9️⃣ Verify Running Containers
+      shell: powershell
       run: docker ps
