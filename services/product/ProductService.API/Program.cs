@@ -12,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 // -------------------- SERVICES --------------------
 
 builder.Services.AddControllers();
-builder.Services.AddHealthChecks();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOpenApi();
@@ -74,6 +73,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHealthChecks("/health");
 
 app.Run();
