@@ -77,7 +77,7 @@ app.MapReverseProxy(proxyPipeline =>
         // ✅ ONLY THESE PRODUCT ENDPOINTS ARE PUBLIC
         var isPublic =
             path == "/products/trending" ||
-            path == "/products/products/NewFeature" ||
+            path == "/products/NewFeature" ||
             path!.StartsWith("/products/type/") ||
             path == "/products/query" ||
             path!.StartsWith("/auth");
