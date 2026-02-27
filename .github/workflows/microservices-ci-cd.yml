@@ -51,7 +51,7 @@ jobs:
       shell: powershell
       run: docker compose build
 
-    - name: 8️⃣ Start Full Microservices Stack (Local Deployment Simulation)
+    - name: 8️⃣ Start Full Microservices Stack (Local Deployment Self Runner)
       shell: powershell
       run: docker compose up -d
 
