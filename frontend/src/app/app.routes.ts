@@ -10,6 +10,11 @@ export const routes: Routes = [
       import('./features/home/home.component').then((m) => m.HomeComponent),
   },
   {
+    path: 'new-product-feature',
+    loadComponent: () =>
+      import('./features/new-product-feature/new-product-feature.component').then((m) => m.NewProductFeatureComponent),
+  },
+  {
     path: 'auth',
     children: [
       {

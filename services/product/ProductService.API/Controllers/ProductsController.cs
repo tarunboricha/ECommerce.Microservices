@@ -33,6 +33,13 @@ public class ProductsController : ControllerBase
         return Ok(await _service.GetCursorPagedAsync(query));
     }
 
+    [HttpGet("NewFeature")]
+    public async Task<IActionResult> NewPrductFeature(
+        [FromQuery] CursorQueryParameters query)
+    {
+        return Ok("New feature has added");
+    }
+
     [HttpPost("query")]
     public async Task<IActionResult> FilterProducts(
         [FromBody] ProductFilterRequest request)

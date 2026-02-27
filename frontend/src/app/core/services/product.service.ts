@@ -26,6 +26,10 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.apiUrl}/trending`);
   }
 
+  getNewFeature(): Observable<string> {
+    return this.http.get<string>(`${this.apiUrl}/NewFeature`)
+  }
+
   /**
    * Get products by type/category (PUBLIC)
    */
