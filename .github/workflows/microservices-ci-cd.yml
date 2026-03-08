@@ -1,6 +1,24 @@
 name: ECommerce Microservices CI/CD (Docker Local Deployment)
 
 on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'The deployment environment (staging or production)'
+        required: true
+        default: 'staging'
+      logLevel:
+        description: 'Log level'
+        required: false
+        default: 'info'
+        type: choice
+        options:
+        - info
+        - debug
+      tags:
+        description: 'Test scenarios tags'
+        required: false
+        type: boolean
   push:
     branches: [ "main" ]
   pull_request:
