@@ -1,16 +1,1 @@
-Hi [Manager’s Name],  
-
-I hope you are doing well.  
-
-I wanted to request your support regarding the office cab facility. Currently, the pickup is from a nodal point, which is difficult for me as a PwD, especially since I stay alone and manage daily routines independently.  
-
-I would like to request consideration for home pickup and drop facility as a reasonable accommodation. Additionally, on some days, I may require a small buffer of 10–15 minutes if there are unavoidable delays in my routine.  
-
-This support would greatly help me manage my commute more effectively and continue contributing without challenges.  
-
-I would really appreciate it if you could help escalate this request to the management.  
-
-Thank you for your understanding and support.  
-
-Regards,  
-Tarun
+AI-powered UI QA Agent that analyzes application screens (via screenshot or URL) and automatically detects UI/UX issues such as alignment, spacing, and styling inconsistencies. The agent uses vision-based AI and simple validation rules to identify mismatches and suggests corrective actions (e.g., CSS fixes). This helps teams quickly validate UI quality without manual effort and improves design consistency during development.
