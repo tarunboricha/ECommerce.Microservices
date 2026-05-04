@@ -1,1 +1,6 @@
 AI-powered UI QA Agent that analyzes application screens (via screenshot or URL) and automatically detects UI/UX issues such as alignment, spacing, and styling inconsistencies. The agent uses vision-based AI and simple validation rules to identify mismatches and suggests corrective actions (e.g., CSS fixes). This helps teams quickly validate UI quality without manual effort and improves design consistency during development.
+
+
+
+
+An AI-powered agent that automatically compares Figma designs with live UI during development, detects visual inconsistencies, and suggests code-level fixes directly in the developer workflow.
